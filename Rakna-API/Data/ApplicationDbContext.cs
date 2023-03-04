@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Rakna_API.Models;
 
 namespace Rakna_API.Data
 {
@@ -10,6 +11,8 @@ namespace Rakna_API.Data
             : base(options)
         {
         }
+        public DbSet<Park> Parks { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -22,5 +25,6 @@ namespace Rakna_API.Data
             builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims", "security");
             builder.Entity<IdentityUserToken<string>>().ToTable("UserTokens", "security");
         }
+       
     }
 }
